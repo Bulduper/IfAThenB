@@ -1,0 +1,9 @@
+[submodule "IfAThenB-Gateway"]
+	path = IfAThenB-Gateway
+	url = https://github.com/Bulduper/IfAThenB-Gateway.git
+[submodule "IfAThenB-Executor"]
+	path = IfAThenB-Executor
+	url = https://github.com/Bulduper/IfAThenB-Executor.git
+[submodule "IfAThenB-Listener"]
+	path = IfAThenB-Listener
+	url = https://github.com/Bulduper/IfAThenB-Listener.git
