@@ -10,15 +10,12 @@ git clone --recursive https://github.com/Bulduper/IfAThenB.git
 cd ./IfAThenB
 ```
 ### Set enviromental variables
-Copy ENV variables templates `.env.template` and set ENV variables in each submodule's `.env` file.
+Copy ENV variables templates `.env.template` and set ENV variables in global `.env` file.
 
-For example:
 ```sh
-cd IfAThenB-Executor
 cp .env.template .env
 #edit ENVs in .env file
 ```
-Do that for all submodules/microservices.
 
 ### Build docker images
 ```sh
