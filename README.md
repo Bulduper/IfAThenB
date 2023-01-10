@@ -10,7 +10,7 @@ git clone --recursive https://github.com/Bulduper/IfAThenB.git
 cd ./IfAThenB
 ```
 ### Set enviromental variables
-Copy ENV variables templates `.env.template` and set ENV variables in global `.env` file.
+Copy ENV variables template `.env.template` and set ENV variables in global `.env` file.
 
 ```sh
 cp .env.template .env
