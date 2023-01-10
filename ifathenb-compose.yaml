@@ -1,0 +1,45 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    ports:
+     - 27017:27017
+    environment:
+     - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    volumes:
+     - ifathenb-dbdata:/data/db
+  ifathenb-gateway:
+    image: ifathenb-gateway:latest
+    ports: 
+     - 3000:3000
+    environment:
+     - DB_HOST=${MONGO_HOST}
+     - DB_USERNAME=${MONGO_USER}
+     - DB_PASSWORD=${MONGO_PASSWORD}
+     - LISTENER_HOST=${LISTENER_HOST}
+     - LISTENER_TCP_PORT=${LISTENER_TCP_PORT}
+     - BACKEND_PORT=${BACKEND_PORT}
+  ifathenb-listener:
+    image: ifathenb-listener:latest
+    ports: 
+     - 3002:3002
+    environment:
+     - EXECUTOR_HOST=${EXECUTOR_HOST}
+     - EXECUTOR_TCP_PORT=${EXECUTOR_TCP_PORT}
+     - BACKEND_HOST=${BACKEND_HOST}
+     - BACKEND_PORT=${BACKEND_PORT}
+     - LISTENER_TCP_PORT=${LISTENER_TCP_PORT}
+     - LISTENER_PORT=${LISTENER_PORT}
+  ifathenb-executor:
+    image: ifathenb-executor:latest
+    environment:
+     - SMTP_HOST=${SMTP_HOST}
+     - SMTP_PORT=${SMTP_PORT}
+     - SMTP_USER=${SMTP_USER}
+     - SMTP_PASSWORD=${SMTP_PASSWORD}
+     - EXECUTOR_TCP_PORT=${EXECUTOR_TCP_PORT}
+volumes:
+  ifathenb-dbdata:
+    driver: local
+  
