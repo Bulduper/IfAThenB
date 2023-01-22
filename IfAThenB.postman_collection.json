@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "77f40e40-eb9c-4f42-8453-6e4c10731b6d",
+		"name": "IfAThenB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19625132"
+	},
+	"item": [
+		{
+			"name": "Listener Service",
+			"item": [
+				{
+					"name": "POST Sync Cron Tasks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{listenerServiceUrl}}/sync",
+							"host": [
+								"{{listenerServiceUrl}}"
+							],
+							"path": [
+								"sync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Run HTTP Trigger",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{listenerServiceUrl}}/http-trigger/tr3",
+							"host": [
+								"{{listenerServiceUrl}}"
+							],
+							"path": [
+								"http-trigger",
+								"tr3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Gateway Service",
+			"item": [
+				{
+					"name": "POST Create Action",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ac5\",\r\n    \"type\": \"EMAIL\",\r\n    \"properties\": {\r\n        \"to\": \"recipient@domain.com\",\r\n        \"subject\": \"Hello from IfAThenB\",\r\n        \"content\": \"Hello, this is a message triggered by a trigger\",\r\n        \"from\":\"\\\"Sender name & surname\\\" <sender@domain.com>\"\r\n    },\r\n    \"enabled\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiGatewayServiceUrl}}/action/",
+							"host": [
+								"{{apiGatewayServiceUrl}}"
+							],
+							"path": [
+								"action",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST Create HTTP Action",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"actionHttpPost\",\r\n    \"type\": \"HTTP\",\r\n    \"properties\": {\r\n        \"url\":\"localhost:8080\",\r\n        \"method\":\"GET\"\r\n    },\r\n    \"enabled\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGatewayServiceUrl}}/action/",
+									"host": [
+										"{{apiGatewayServiceUrl}}"
+									],
+									"path": [
+										"action",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "POST Create EMAIL Action",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ac5\",\r\n    \"type\": \"EMAIL\",\r\n    \"properties\": {\r\n        \"to\": \"recipient@domain.com\",\r\n        \"subject\": \"Hello from IfAThenB\",\r\n        \"content\": \"Hello, this is a message triggered by a trigger\",\r\n        \"from\":\"\\\"Sender name & surname\\\" <sender@domain.com>\"\r\n    },\r\n    \"enabled\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGatewayServiceUrl}}/action/",
+									"host": [
+										"{{apiGatewayServiceUrl}}"
+									],
+									"path": [
+										"action",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "POST Create Trigger",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"tr3\",\r\n    \"type\": \"HTTP\",\r\n    \"properties\": {\r\n    },\r\n    \"actions\": [\"63cbfa54a92c77e7b16a5042\"],\r\n    \"enabled\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiGatewayServiceUrl}}/trigger/",
+							"host": [
+								"{{apiGatewayServiceUrl}}"
+							],
+							"path": [
+								"trigger",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "POST Create HTTP Trigger",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"tr3\",\r\n    \"type\": \"HTTP\",\r\n    \"properties\": {\r\n    },\r\n    \"actions\": [\"63cbfa54a92c77e7b16a5042\"],\r\n    \"enabled\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGatewayServiceUrl}}/trigger/",
+									"host": [
+										"{{apiGatewayServiceUrl}}"
+									],
+									"path": [
+										"trigger",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "POST Create CRON Trigger",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"everyMinute\",\r\n    \"type\": \"CRON\",\r\n    \"properties\": {\r\n        \"pattern\":\"10 * * * * *\"\r\n    },\r\n    \"actions\": [\"63b871fb10f46c4ae73f7c5e\"],\r\n    \"enabled\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGatewayServiceUrl}}/trigger/",
+									"host": [
+										"{{apiGatewayServiceUrl}}"
+									],
+									"path": [
+										"trigger",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "GET Find triggers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiGatewayServiceUrl}}/trigger",
+							"host": [
+								"{{apiGatewayServiceUrl}}"
+							],
+							"path": [
+								"trigger"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Find actions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiGatewayServiceUrl}}/action/",
+							"host": [
+								"{{apiGatewayServiceUrl}}"
+							],
+							"path": [
+								"action",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiGatewayServiceUrl",
+			"value": "localhost:3000"
+		},
+		{
+			"key": "listenerServiceUrl",
+			"value": "localhost:3002",
+			"type": "string"
+		}
+	]
+}
