@@ -9,7 +9,7 @@ This project consists of 3 microservices + mongoDB database.
 git clone --recursive https://github.com/Bulduper/IfAThenB.git
 cd ./IfAThenB
 ```
-### Set enviromental variables
+### Set environmental variables
 Copy ENV variables template `.env.template` and set ENV variables in global `.env` file.
 
 ```sh
@@ -36,3 +36,4 @@ docker compose -f ./ifathenb-compose.yaml up
 ## Action types
 - HTTP request 
 - send email
+

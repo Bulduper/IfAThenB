@@ -12,7 +12,7 @@ services:
   ifathenb-gateway:
     image: ifathenb-gateway:latest
     ports: 
-     - 3000:3000
+     - ${BACKEND_PORT}:${BACKEND_PORT}
     environment:
      - DB_HOST=${MONGO_HOST}
      - DB_USERNAME=${MONGO_USER}
@@ -23,7 +23,7 @@ services:
   ifathenb-listener:
     image: ifathenb-listener:latest
     ports: 
-     - 3002:3002
+     - ${LISTENER_PORT}:${LISTENER_PORT}
     environment:
      - EXECUTOR_HOST=${EXECUTOR_HOST}
      - EXECUTOR_TCP_PORT=${EXECUTOR_TCP_PORT}
